@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Interrapidisimo.Microservices.Api.Student.Abstractions/Interrapidisimo.Microservices.Api.Student.Abstractions.csproj" />
+  <Project Path="Interrapidisimo.Microservices.Api.Student.DTOs/Interrapidisimo.Microservices.Api.Student.DTOs.csproj" />
+  <Project Path="Interrapidisimo.Microservices.Api.Student.Entities/Interrapidisimo.Microservices.Api.Student.Entities.csproj" />
+  <Project Path="Interrapidisimo.Microservices.Api.Student.EntityFramework/Interrapidisimo.Microservices.Api.Student.EntityFramework.csproj" />
+  <Project Path="Interrapidisimo.Microservices.Api.Student.Logic/Interrapidisimo.Microservices.Api.Student.Logic.csproj" />
+  <Project Path="Interrapidisimo.Microservices.Api.Student/Interrapidisimo.Microservices.Api.Student.csproj" />
+</Solution>
