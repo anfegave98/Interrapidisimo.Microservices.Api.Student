@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class Student
+    public class Enrollment
     {
         /// <summary>
         /// 
@@ -12,22 +12,18 @@
         /// <summary>
         /// 
         /// </summary>
-        public string FirstName { get; set; } = null!;
+        public int StudentId { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string LastName { get; set; } = null!;
+        public Student Student { get; set; } = null!;
         /// <summary>
         /// 
         /// </summary>
-        public string Email { get; set; } = null!;
+        public int SubjectId { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime Created { get; set; } = DateTime.UtcNow;
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public Subject Subject { get; set; } = null!;
     }
 }

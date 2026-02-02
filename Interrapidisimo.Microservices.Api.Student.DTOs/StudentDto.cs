@@ -1,9 +1,7 @@
-﻿namespace Interrapidisimo.Microservices.Api.Student.Entities
+﻿
+namespace Interrapidisimo.Microservices.Api.Student.DTOs
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class Student
+    public class StudentDto
     {
         /// <summary>
         /// 
@@ -25,9 +23,5 @@
         /// 
         /// </summary>
         public DateTime Created { get; set; } = DateTime.UtcNow;
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 }

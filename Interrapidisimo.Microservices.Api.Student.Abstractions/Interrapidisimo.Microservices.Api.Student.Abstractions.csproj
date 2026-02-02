@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<ItemGroup>
+		<ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.Entities\Interrapidisimo.Microservices.Api.Student.Entities.csproj" />
+		<ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.DTOs\Interrapidisimo.Microservices.Api.Student.DTOs.csproj" />
+	</ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

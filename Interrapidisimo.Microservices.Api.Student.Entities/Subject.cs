@@ -1,9 +1,10 @@
-﻿namespace Interrapidisimo.Microservices.Api.Student.Entities
+﻿
+namespace Interrapidisimo.Microservices.Api.Student.Entities
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Student
+    public class Subject
     {
         /// <summary>
         /// 
@@ -12,19 +13,19 @@
         /// <summary>
         /// 
         /// </summary>
-        public string FirstName { get; set; } = null!;
+        public string Name { get; set; } = null!;
         /// <summary>
         /// 
         /// </summary>
-        public string LastName { get; set; } = null!;
+        public int Credits { get; set; } = 3;
         /// <summary>
         /// 
         /// </summary>
-        public string Email { get; set; } = null!;
+        public int TeacherId { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public Teacher Teacher { get; set; } = null!;
         /// <summary>
         /// 
         /// </summary>

@@ -4,6 +4,7 @@
     <ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.Entities\Interrapidisimo.Microservices.Api.Student.Entities.csproj" />
     <ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.DTOs\Interrapidisimo.Microservices.Api.Student.DTOs.csproj" />
     <ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.Abstractions\Interrapidisimo.Microservices.Api.Student.Abstractions.csproj" />
+	<ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.EntityFramework\Interrapidisimo.Microservices.Api.Student.EntityFramework.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
