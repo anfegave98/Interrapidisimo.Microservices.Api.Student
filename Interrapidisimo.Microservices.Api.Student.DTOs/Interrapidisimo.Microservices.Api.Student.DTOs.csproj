@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Interrapidisimo.Microservices.Api.Student.Entities\Interrapidisimo.Microservices.Api.Student.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

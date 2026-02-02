@@ -1,5 +1,4 @@
 ﻿using Interrapidisimo.Microservices.Api.Student.Abstractions;
-using Interrapidisimo.Microservices.Api.Student.Logic.Student.Logic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Interrapidisimo.Microservices.Api.Student.Controllers
