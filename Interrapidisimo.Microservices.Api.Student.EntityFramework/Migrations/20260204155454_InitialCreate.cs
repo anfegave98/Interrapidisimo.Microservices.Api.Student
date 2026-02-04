@@ -19,10 +19,10 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()")
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +48,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     Credits = table.Column<int>(type: "int", nullable: false, defaultValue: 3),
                     TeacherId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -60,7 +60,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,11 +94,11 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                 columns: new[] { "Id", "Created", "Email", "FirstName", "LastName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(17), "andres.galeano@gmail.com", "Andres", "Galeano" },
-                    { 2, new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(21), "isabella@gmail.com", "Isabella", "Roche" },
-                    { 3, new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(23), "andrea@gmail.com", "Andrea", "Velasco" },
-                    { 4, new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(24), "felipe@gmail.com", "Felipe", "Velasco" },
-                    { 5, new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(25), "danya@gmail.com", "Danya", "Sotelo" }
+                    { 1, new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7173), "andres.galeano@gmail.com", "Andres", "Galeano" },
+                    { 2, new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7183), "isabella@gmail.com", "Isabella", "Roche" },
+                    { 3, new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7185), "andrea@gmail.com", "Andrea", "Velasco" },
+                    { 4, new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7187), "felipe@gmail.com", "Felipe", "Velasco" },
+                    { 5, new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7189), "danya@gmail.com", "Danya", "Sotelo" }
                 });
 
             migrationBuilder.InsertData(
@@ -110,7 +110,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                     { 2, "Profesor Maria Gomez" },
                     { 3, "Profesor Carlos Ruiz" },
                     { 4, "Profesor Ana Torres" },
-                    { 5, "Profesor. Luis Herrera" }
+                    { 5, "Profesor Luis Herrera" }
                 });
 
             migrationBuilder.InsertData(
@@ -159,6 +159,12 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                 name: "IX_Enrollments_SubjectId",
                 table: "Enrollments",
                 column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_Email",
+                table: "Students",
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Subjects_TeacherId",

@@ -43,7 +43,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                     b.HasIndex("StudentId", "SubjectId")
                         .IsUnique();
 
-                    b.ToTable("Enrollments");
+                    b.ToTable("Enrollments", (string)null);
 
                     b.HasData(
                         new
@@ -129,29 +129,37 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Students", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(17),
+                            Created = new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7173),
                             Email = "andres.galeano@gmail.com",
                             FirstName = "Andres",
                             LastName = "Galeano"
@@ -159,7 +167,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(21),
+                            Created = new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7183),
                             Email = "isabella@gmail.com",
                             FirstName = "Isabella",
                             LastName = "Roche"
@@ -167,7 +175,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(23),
+                            Created = new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7185),
                             Email = "andrea@gmail.com",
                             FirstName = "Andrea",
                             LastName = "Velasco"
@@ -175,7 +183,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(24),
+                            Created = new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7187),
                             Email = "felipe@gmail.com",
                             FirstName = "Felipe",
                             LastName = "Velasco"
@@ -183,7 +191,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2026, 2, 2, 2, 31, 5, 300, DateTimeKind.Utc).AddTicks(25),
+                            Created = new DateTime(2026, 2, 4, 15, 54, 53, 185, DateTimeKind.Utc).AddTicks(7189),
                             Email = "danya@gmail.com",
                             FirstName = "Danya",
                             LastName = "Sotelo"
@@ -205,7 +213,8 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(120)
+                        .HasColumnType("nvarchar(120)");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
@@ -214,7 +223,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
 
                     b.HasData(
                         new
@@ -299,11 +308,12 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
 
                     b.HasData(
                         new
@@ -329,7 +339,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                         new
                         {
                             Id = 5,
-                            Name = "Profesor. Luis Herrera"
+                            Name = "Profesor Luis Herrera"
                         });
                 });
 
@@ -357,7 +367,7 @@ namespace Interrapidisimo.Microservices.Api.Student.EntityFramework.Migrations
                     b.HasOne("Interrapidisimo.Microservices.Api.Student.Entities.Teacher", "Teacher")
                         .WithMany("Subjects")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Teacher");

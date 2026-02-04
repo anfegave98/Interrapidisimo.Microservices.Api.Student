@@ -1,9 +1,9 @@
 using Interrapidisimo.Microservices.Api.Student.Abstractions;
 using Interrapidisimo.Microservices.Api.Student.EntityFramework;
-using Interrapidisimo.Microservices.Api.Student.Logic.Enrollment.Services;
+using Interrapidisimo.Microservices.Api.Student.Logic.Enrollment.Logic;
 using Interrapidisimo.Microservices.Api.Student.Logic.Student.Logic;
-using Interrapidisimo.Microservices.Api.Student.Logic.Teacher.Services;
-using Interrapidisimo.Microservices.Api.Subject.Logic.Subject.Services;
+using Interrapidisimo.Microservices.Api.Student.Logic.Teacher.Logic;
+using Interrapidisimo.Microservices.Api.Subject.Logic.Subject.Logic;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,15 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IStudentService, StudentService>();
-builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
-builder.Services.AddScoped<ISubjectService, SubjectService>();
-builder.Services.AddScoped<ITeacherService, TeacherService>();
+/// Dependency Injection
+builder.Services.AddScoped<IStudentLogic, StudentLogic>();
+builder.Services.AddScoped<IEnrollmentLogic, EnrollmentLogic>();
+builder.Services.AddScoped<ISubjectLogic, SubjectLogic>();
+builder.Services.AddScoped<ITeacherLogic, TeacherLogic>();
 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/// Database Context
 builder.Services.AddDbContext<StudentDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("StudentDb"),

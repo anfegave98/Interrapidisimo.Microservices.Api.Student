@@ -3,33 +3,35 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Interrapidisimo.Microservices.Api.Student.Controllers
 {
-
+    /// <summary>
+    /// Controller de los servicios de materias
+    /// </summary>
     [ApiController]
     [Route("api/subjects")]
     public class SubjectsController : ControllerBase
     {
         /// <summary>
-        /// 
+        /// expone los servicios de materias
         /// </summary>
-        private readonly ISubjectService service;
+        private readonly ISubjectLogic logic;
         /// <summary>
-        /// 
+        /// constructor del controller
         /// </summary>
         /// <param name="service"></param>
-        public SubjectsController(ISubjectService service)
+        public SubjectsController(ISubjectLogic logic)
         {
-            this.service = service;
+            this.logic = logic;
         }
 
 
         /// <summary>
-        /// 
+        /// servicio para obtener todas las materias
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await this.service.GetAllAsync());
+            return Ok(await this.logic.GetAllAsync());
         }
     }
 }
